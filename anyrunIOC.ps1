@@ -1,6 +1,6 @@
 #Get Top Malware Links
 
-Clear-Variable -Name ips, malfilehash, urls
+#Clear-Variable -Name ips, malfilehash, urls
 
 $anyrunURLs = ((Invoke-WebRequest –Uri ‘https://any.run/malware-trends/’).Links | Where-Object {$_.href -like “/malware-trends/*”})
 $staticURLPart = "https://any.run"
