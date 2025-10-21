@@ -1,0 +1,6 @@
+DeviceNetworkEvents
+| where RemoteIPType == "Public"
+| join kind=inner (Watchlist
+    | evaluate bag_unpack(WatchlistItem, columnsConflict='replace_source')
+    | where IOCType == "domain"
+  ) on $left.RemoteUrl == $right.IOCValue
