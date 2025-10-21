@@ -1,0 +1,6 @@
+EmailUrlInfo
+| join kind=inner (Watchlist
+    | evaluate bag_unpack(WatchlistItem, columnsCon-flict='replace_source')
+    | where IOCType == "url"
+  ) on $left.Url == $right.IOCValue
+| join EmailEvents on NetworkMessageId
